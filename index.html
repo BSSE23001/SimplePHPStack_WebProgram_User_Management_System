@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Management System</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header>
+    <h1>USER MANAGEMENT SYSTEM</h1>
+</header>
+<div class="container">
+    <div id="message" class="message" style="display: none;"></div>
+
+    <div class="forms-container">
+        <div class="form-section">
+            <h2>Add User</h2>
+            <form id="user-form">
+                <input type="hidden" name="id" id="user-id">
+
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" name="name" id="name" required>
+                    <div id="name-error" class="error-message"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" name="username" id="username" required>
+                    <div id="username-error" class="error-message"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email" required>
+                    <div id="email-error" class="error-message"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password" required>
+                    <div id="password-error" class="error-message"></div>
+                </div>
+
+                <div class="form-group">
+                    <label>Gender</label>
+                    <div class="radio-group">
+                        <label>
+                            <input type="radio" name="gender" value="male" checked> Male
+                        </label>
+                        <label>
+                            <input type="radio" name="gender" value="female"> Female
+                        </label>
+                        <label>
+                            <input type="radio" name="gender" value="other"> Other
+                        </label>
+                    </div>
+                    <div id="gender-error" class="error-message"></div>
+                </div>
+
+                <div class="form-group">
+                    <label>Interests (Select all that apply)</label>
+                    <div class="checkbox-group">
+                        <label>
+                            <input type="checkbox" name="interests[]" value="sports"> Sports
+                        </label>
+                        <label>
+                            <input type="checkbox" name="interests[]" value="music"> Music
+                        </label>
+                        <label>
+                            <input type="checkbox" name="interests[]" value="reading"> Reading
+                        </label>
+                        <label>
+                            <input type="checkbox" name="interests[]" value="travel"> Travel
+                        </label>
+                    </div>
+                    <div id="interests-error" class="error-message"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="country">Country</label>
+                    <select name="country" id="country" required>
+                        <option value="">Select Country</option>
+                        <option value="us">United States</option>
+                        <option value="ca">Canada</option>
+                        <option value="uk">United Kingdom</option>
+                        <option value="pk">Pakistan</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <div id="country-error" class="error-message"></div>
+                </div>
+
+                <button type="submit" id="submit-btn" class="btn">Add User</button>
+                <a href="index.html" id="cancel-btn" class="btn" style="display: none;">Cancel</a>
+            </form>
+        </div>
+        <div class="form-section">
+            <h2>Delete User</h2>
+            <form id="delete-form">
+                <div class="form-group">
+                    <label for="delete_id">User ID to Delete</label>
+                    <input type="number" name="delete_id" id="delete_id" required>
+                    <div id="delete_id-error" class="error-message"></div>
+                </div>
+                <button type="submit" class="btn">Delete User</button>
+            </form>
+        </div>
+    </div>
+    <br><br>
+    <h1>User List</h1>
+    <!-- Search Form -->
+    <div class="search-form">
+        <h2>Search User</h2>
+        <form id="search-form">
+            <div class="form-group">
+                <label for="search">Search by Name or Email:</label>
+                <input type="text" name="search" id="search">
+            </div>
+            <button type="submit" class="btn">Search</button>
+        </form>
+    </div>
+
+    <div class="filter-section">
+        <h2>Filter and Sort</h2>
+        <form id="filter-form">
+            <div class="form-group">
+                <label for="sort">Sort By:</label>
+                <select name="sort" id="sort">
+                    <option value="name_asc">Name (A-Z)</option>
+                    <option value="name_desc">Name (Z-A)</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn">Apply</button>
+        </form>
+    </div>
+
+    <!-- Users Table -->
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Gender</th>
+            <th>Country</th>
+            <th>Interests</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody id="users-table-body">
+        <tr>
+            <td colspan="8">Loading users...</td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+
+<script src="js/index.js"></script>
+</body>
+</html>
